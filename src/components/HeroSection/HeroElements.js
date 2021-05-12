@@ -57,7 +57,7 @@ export const HeroH1 = styled.h1`
     font-size: 80px;
     text-align: center;
     opacity: 50%;
-    animation: text 10s 100;
+    animation: text 11s 100;
 
     @keyframes text{
         0%{

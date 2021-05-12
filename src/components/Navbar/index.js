@@ -3,14 +3,39 @@ import {FaBars} from 'react-icons/fa'
 import {IconContext} from 'react-icons/lib'
 import {Nav, NavbarContainer, NavLogo, MobileIcon, NavMenu,NavLinks, NavItem, NavBtn, NavBtnLink} from './NavbarElements'
 import {animateScroll as scroll} from 'react-scroll'
+import {connectWallet} from '../../components/Metamask.js'
+import Web3 from 'web3'
+
 
 const Navbar = ({toggle}) => {
 
     const [scrollNav, setScrollNav] = useState(false)
+    const [walletAddress, setWalletAddress] = useState('')
 
     useEffect(() =>{
         window.addEventListener('scroll', changeNav)
     }, [])
+
+    React.useEffect(() => {
+        const checkConnection = async () => {
+ 
+            // Check if browser is running Metamask
+            let web3;
+            if (window.ethereum) {
+                web3 = new Web3(window.ethereum);
+            } else if (window.web3) {
+                web3 = new Web3(window.web3.currentProvider);
+            };
+ 
+            // Check if User is already connected by retrieving the accounts
+            web3.eth.getAccounts()
+                .then(async (addr) => {
+                    if(addr[0])
+                        setWalletAddress(addr[0].substring(0,4) + '...' + addr[0].substring(addr[0].length -4 ,addr[0].length))
+                });
+        };
+        checkConnection();
+    }, []);
 
     const changeNav = () => {
         if(window.scrollY >= 200){
@@ -22,6 +47,16 @@ const Navbar = ({toggle}) => {
 
     const toggleHome = () => {
         scroll.scrollToTop();
+    }
+
+    const checkWallet = async () => {
+        let walletInfo = await connectWallet()
+        if (walletInfo.hasMetamask){
+            let address = walletInfo.address[0]
+            setWalletAddress(address.substring(0,4) + '...' + address.substring(address.length -4 ,address.length))
+        }else{
+            alert(walletInfo.status)
+        }
     }
 
     return (
@@ -50,7 +85,7 @@ const Navbar = ({toggle}) => {
                             </NavItem>
                         </NavMenu>
                         <NavBtn>
-                            <NavBtnLink to="/signin">Sign In</NavBtnLink>
+                            <NavBtnLink onClick={checkWallet}>{walletAddress === '' ? 'Connect' : walletAddress}</NavBtnLink>
                         </NavBtn>
                     </NavbarContainer>
                 </Nav>
