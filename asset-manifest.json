@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/dApp-messi/static/css/main.ee569f78.chunk.css",
+    "main.js": "/dApp-messi/static/js/main.468109d1.chunk.js",
+    "main.js.map": "/dApp-messi/static/js/main.468109d1.chunk.js.map",
+    "runtime-main.js": "/dApp-messi/static/js/runtime-main.c15ffcfe.js",
+    "runtime-main.js.map": "/dApp-messi/static/js/runtime-main.c15ffcfe.js.map",
+    "static/js/2.8793ea88.chunk.js": "/dApp-messi/static/js/2.8793ea88.chunk.js",
+    "static/js/2.8793ea88.chunk.js.map": "/dApp-messi/static/js/2.8793ea88.chunk.js.map",
+    "index.html": "/dApp-messi/index.html",
+    "static/css/main.ee569f78.chunk.css.map": "/dApp-messi/static/css/main.ee569f78.chunk.css.map",
+    "static/js/2.8793ea88.chunk.js.LICENSE.txt": "/dApp-messi/static/js/2.8793ea88.chunk.js.LICENSE.txt",
+    "static/media/graphicAnalisys.svg": "/dApp-messi/static/media/graphicAnalisys.72f39bdf.svg",
+    "static/media/predictions.svg": "/dApp-messi/static/media/predictions.56f5d648.svg",
+    "static/media/streaming.svg": "/dApp-messi/static/media/streaming.88ca71f1.svg",
+    "static/media/svg-3.96a9d199.svg": "/dApp-messi/static/media/svg-3.96a9d199.svg",
+    "static/media/svg-4.6308a3a0.svg": "/dApp-messi/static/media/svg-4.6308a3a0.svg",
+    "static/media/svg-5.c3d78de3.svg": "/dApp-messi/static/media/svg-5.c3d78de3.svg",
+    "static/media/video.33c3a279.mp4": "/dApp-messi/static/media/video.33c3a279.mp4"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c15ffcfe.js",
+    "static/js/2.8793ea88.chunk.js",
+    "static/css/main.ee569f78.chunk.css",
+    "static/js/main.468109d1.chunk.js"
+  ]
+}
