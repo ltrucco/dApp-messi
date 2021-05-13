@@ -100,7 +100,7 @@ export const NavBtnLink = styled.button`
     border-radius: 40px;
     background: #01bf71;
     white-space: nowrap;
-    text-transform: lowercase;
+    text-transform: uppercase;
     padding: 10px 20px;
     color: #010606;
     font-size: 17px;
