@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/dApp-messi/static/css/main.ee569f78.chunk.css",
-    "main.js": "/dApp-messi/static/js/main.468109d1.chunk.js",
-    "main.js.map": "/dApp-messi/static/js/main.468109d1.chunk.js.map",
+    "main.js": "/dApp-messi/static/js/main.6a8545a3.chunk.js",
+    "main.js.map": "/dApp-messi/static/js/main.6a8545a3.chunk.js.map",
     "runtime-main.js": "/dApp-messi/static/js/runtime-main.c15ffcfe.js",
     "runtime-main.js.map": "/dApp-messi/static/js/runtime-main.c15ffcfe.js.map",
     "static/js/2.8793ea88.chunk.js": "/dApp-messi/static/js/2.8793ea88.chunk.js",
@@ -22,6 +22,6 @@
     "static/js/runtime-main.c15ffcfe.js",
     "static/js/2.8793ea88.chunk.js",
     "static/css/main.ee569f78.chunk.css",
-    "static/js/main.468109d1.chunk.js"
+    "static/js/main.6a8545a3.chunk.js"
   ]
 }
