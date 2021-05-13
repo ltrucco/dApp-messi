@@ -1,10 +1,27 @@
 import React from 'react'
 import { Button } from '../ButtonElement'
 import {InfoContainer, InfoWrapper, InfoRow, Column1, TextWrapper, TopLine, Heading, Subtitle, BtnWrap, Column2, ImgWrap, Img} from './InfoSectionElements'
+import { StoreContext } from '../../Context/Store'
+import CustomSnackbar from '../Snackbar'
 
 const InfoSection = ({lightBg, id, imgStart, topLine, lightText, darkText, buttonLabel, alt, img, headline, description, primary, dark, dark2}) => {
 
-    
+    const { state, dispatch } = React.useContext( StoreContext )
+    const [showSnackbar, setShowSnackbar] = React.useState(false);
+    const [message, setMessage] = React.useState('You must have at least 20.000.000.000 $messi to access Live Broadcasts')
+
+
+    const checkTokenAmmount = () => {
+        let tokensAvailable = (state.messiTokensAvailable / 100000000000000000000).toFixed(2)
+        if (tokensAvailable >= 20000000000)
+            alert(state.messiTokensAvailable)
+        else
+            setShowSnackbar(true)
+    }
+
+    const closeSnackbar = () => {
+        setShowSnackbar(false)
+    }
 
     return (
         <>
@@ -17,7 +34,7 @@ const InfoSection = ({lightBg, id, imgStart, topLine, lightText, darkText, butto
                                 <Heading lightText={lightText}> {headline} </Heading>
                                 <Subtitle darkText={darkText}> {description} </Subtitle>
                                 <BtnWrap>
-                                    {buttonLabel !== "" && <Button to="home"
+                                    {buttonLabel !== "" && <Button onClick={checkTokenAmmount}
                                         smooth={true}
                                         duration={500}
                                         spy={true}
@@ -38,7 +55,7 @@ const InfoSection = ({lightBg, id, imgStart, topLine, lightText, darkText, butto
                         </Column2>
                     </InfoRow>
                 </InfoWrapper>
-
+                {showSnackbar && <CustomSnackbar onClose={() => closeSnackbar()} variant={'info'} message={message} timer={5000} />}
             </InfoContainer>
         </>
     )

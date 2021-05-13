@@ -100,7 +100,7 @@ export const NavBtnLink = styled.button`
     border-radius: 40px;
     background: #01bf71;
     white-space: nowrap;
-    text-transform: lowercase;
+    /* text-transform: lowercase; */
     padding: 10px 20px;
     color: #010606;
     font-size: 17px;
@@ -116,5 +116,29 @@ export const NavBtnLink = styled.button`
         background: #fff;
         color: #010606;
     }
+
+`
+
+export const NavBtnLinkToken = styled.button`
+    border-radius:10px;
+    background: #01bf71;
+    white-space: nowrap;
+    margin-left: 20px;
+    padding: 10px 20px;
+    color: #010606;
+    font-size: 17px;
+    font-weight:bold;
+    outline:none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    text-decoration: none;
+    cursor: default;
+
+    /* &:hover{
+        transition: all 0.2s ease-in-out;
+        background: #fff;
+        color: #010606;
+    } */
 
 `

@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import Home from './pages';
 import SigninPage from './pages/signin';
+import { StoreProvider } from "./Context/Store";
 
 const App = () => {
 
@@ -10,6 +11,7 @@ const App = () => {
 
   return (
     <div >
+      <StoreProvider>
       <Router basename={process.env.PUBLIC_URL}>
         <Switch>
           <Route path="/" component={Home} exact />
@@ -17,6 +19,7 @@ const App = () => {
         </Switch>
         
       </Router>
+      </StoreProvider>
       
     </div>
   );

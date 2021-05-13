@@ -6,7 +6,7 @@ export const homeObjOne = {
     topLine: 'Premium content',
     headline: 'Live broadcasts for $messi holders',
     description: "Get access to our exclusive Crypto live streams where you can learn from people who have been in Crypto for more than 7 years ",
-    buttonLabel: 'Get started',
+    buttonLabel: 'Check broadcast !',
     imgStart: false,
     img: require('../../images/streaming.svg').default,
     alt: "Car",
