@@ -10,3 +10,65 @@
   border-radius: 20px!important;
   flex-wrap: nowrap!important;
 }
+
+.video-responsive {
+  overflow: hidden;
+  padding-bottom: 56.25%;
+  position: relative;
+  height: 0;
+}
+
+.video-responsive iframe {
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+.MuiDialog-paperFullWidth{
+  all:revert!important;
+}
+
+.MuiDialog-paperWidthSm{
+  max-width: 1500px!important;
+}
+
+iframe{
+  width: 580px;
+}
+
+/* .MuiPaper-root{
+  width: 1000px;
+  background-color: red;
+} */
+
+/* .MuiDialog-paper{
+  width: 1000px!important;
+  padding: 200px;
+  background-color: red;
+} */
+
+.tw-absolute:hover{
+  pointer-events: none!important;
+
+  
+}
+
+.video-player__default-player:hover{
+  pointer-events: none!important;
+}
+
+.tw-absolute {
+  pointer-events: none!important;
+
+  
+}
+
+.video-player__default-player {
+  pointer-events: none!important;
+}
+
+.pointerEventNone:hover{
+  pointer-events: none!important;
+}
