@@ -8,15 +8,18 @@ const InfoSection = ({lightBg, id, imgStart, topLine, lightText, darkText, butto
 
     const { state, dispatch } = React.useContext( StoreContext )
     const [showSnackbar, setShowSnackbar] = React.useState(false);
-    const [message, setMessage] = React.useState('You must have at least 20.000.000.000 $messi to access Live Broadcasts')
+    const [message, setMessage] = React.useState('')
 
 
     const checkTokenAmmount = () => {
         let tokensAvailable = (state.messiTokensAvailable / 100000000000000000000).toFixed(2)
-        if (tokensAvailable >= 20000000000)
-            alert(state.messiTokensAvailable)
-        else
+        if (tokensAvailable >= 20000000000){
+            setMessage('Will soon be released')
             setShowSnackbar(true)
+        }else{
+            setMessage('You must have at least 20.000.000.000 $messi to access Live Broadcasts')
+            setShowSnackbar(true)
+        }
     }
 
     const closeSnackbar = () => {
