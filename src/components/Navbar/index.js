@@ -13,7 +13,7 @@ import { StoreContext } from '../../Context/Store'
 
 const Navbar = ( { toggle } ) => {
     // const web3 = new Web3('https://data-seed-prebsc-1-s1.binance.org:8545');
-    window.ethereum.on('disconnect', () => alert('error'));
+    // window.ethereum.on('disconnect', () => alert('error'));
     const { state, dispatch } = React.useContext( StoreContext )
     const [scrollNav, setScrollNav] = useState( false )
     const [showPopUpDisconnect, setShowPopUpDisconnect] = useState(false)
@@ -23,7 +23,7 @@ const Navbar = ( { toggle } ) => {
     }, [] )
 
     React.useEffect( () => {
-        document.addEventListener('disconnect', eventDisconnectWallet, false);
+        // document.addEventListener('disconnect', eventDisconnectWallet, false);
         const checkConnection = async () => {
             // Check if browser is running Metamask
             let web3;
@@ -128,7 +128,7 @@ const Navbar = ( { toggle } ) => {
                             <NavBtnLink onClick={() => state.walletAddress === '' ? checkWallet() : disconnectWallet()}>{state.walletAddress === '' ? 'Connect' : state.walletAddress}</NavBtnLink>
                             {state.messiTokensAvailable && <NavBtnLinkToken >{(state.messiTokensAvailable / 100000000000000000000).toFixed(2)}</NavBtnLinkToken>}
                         </NavBtn>
-                        {/* {showPopUpDisconnect && <AlertDialogSlide closePopUp={() => setShowPopUpDisconnect(false)} closePopUpDisconnect={() => closePopUpDisconnect()}/> } */}
+                        {showPopUpDisconnect && <AlertDialogSlide closePopUp={() => setShowPopUpDisconnect(false)} closePopUpDisconnect={() => closePopUpDisconnect()}/> }
                     </NavbarContainer>
                 </Nav>
             </IconContext.Provider>
