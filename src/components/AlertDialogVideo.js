@@ -37,7 +37,7 @@ export default function AlertDialogVideo({closePopUp, }) {
           {/* <div className='pointerEventNone' style={{position: 'absolute', width:'100%', height:'50%', background:'red', top:0, left: 0, pointerEvents: 'none', opacity: '10%', zIndex:'9999999999999'}}> */}
           {/* </div> */}
             {/* <YoutubeEmbed embedId="CSqX8TQvRVA" /> */}
-            <ReactTwitchEmbedVideo channel="PeinateCarlitos" />
+            <ReactTwitchEmbedVideo channel="anonimessi" />
           
       
       </Dialog>
