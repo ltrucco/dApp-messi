@@ -26,3 +26,20 @@ export const connectWallet = async () => {
           }
         } 
   };
+
+
+  export const disconnectWalletMetamask = async () => {
+    if (window.ethereum) { //check if Metamask is installed
+          try {
+            window.ethereum.on('disconnect', () => alert('error'));
+
+
+
+              return true
+               
+          } catch (error) {
+              return false
+          }
+          
+    } 
+  };

@@ -3,28 +3,27 @@ import { FaBars } from 'react-icons/fa'
 import { IconContext } from 'react-icons/lib'
 import { Nav, NavbarContainer, NavLogo, MobileIcon, NavMenu, NavLinks, NavItem, NavBtn, NavBtnLink, NavBtnLinkToken } from './NavbarElements'
 import { animateScroll as scroll } from 'react-scroll'
-import { connectWallet } from '../../components/Metamask.js'
+import { connectWallet, disconnectWalletMetamask } from '../../components/Metamask.js'
 import Web3 from 'web3'
 import {contract} from '../../constants/contract.js'
 import {tokenABI} from '../../constants/tokenABI.js'
-
+import AlertDialogSlide from '../AlertDialogSlide'
 import { StoreContext } from '../../Context/Store'
 
 
 const Navbar = ( { toggle } ) => {
-    const web3 = new Web3('https://data-seed-prebsc-1-s1.binance.org:8545');
-
+    // const web3 = new Web3('https://data-seed-prebsc-1-s1.binance.org:8545');
+    window.ethereum.on('disconnect', () => alert('error'));
     const { state, dispatch } = React.useContext( StoreContext )
-
     const [scrollNav, setScrollNav] = useState( false )
-    const [walletAddress, setWalletAddress] = useState( '' )
-    const [messiTokensAvailable, setMessiTokensAvailable] = useState(null)
+    const [showPopUpDisconnect, setShowPopUpDisconnect] = useState(false)
 
     useEffect( () => {
         window.addEventListener( 'scroll', changeNav )
     }, [] )
 
     React.useEffect( () => {
+        document.addEventListener('disconnect', eventDisconnectWallet, false);
         const checkConnection = async () => {
             // Check if browser is running Metamask
             let web3;
@@ -42,10 +41,6 @@ const Navbar = ( { toggle } ) => {
                             type: 'UPDATE_WALLET_ADDRESS',
                             walletAddress: addr[0].substring( 0, 4 ) + '...' + addr[0].substring( addr[0].length - 4, addr[0].length)
                         })
-                        // setWalletAddress( addr[0].substring( 0, 4 ) + '...' + addr[0].substring( addr[0].length - 4, addr[0].length ) )
-
-                        // let balance = await web3.eth.getBalance(addr[0])
-                        
                         
                         const tokenInst = new web3.eth.Contract(tokenABI,contract);
                         const balanceMessi = await tokenInst.methods.balanceOf(addr[0]).call()
@@ -55,9 +50,6 @@ const Navbar = ( { toggle } ) => {
                                 messiTokensAvailable: res.toString()
                             })
                         })
-                        
-
-
                     }
                 } );
 
@@ -73,6 +65,13 @@ const Navbar = ( { toggle } ) => {
         }
     }
 
+    const eventDisconnectWallet = () => {
+        dispatch({
+            type: 'UPDATE_WALLET_ADDRESS',
+            walletAddress: ''
+        })
+    }
+
     const toggleHome = () => {
         scroll.scrollToTop();
     }
@@ -86,14 +85,6 @@ const Navbar = ( { toggle } ) => {
                 walletAddress: addr.substring( 0, 4 ) + '...' + addr.substring( addr.length - 4, addr.length)
             })
 
-            // const tokenInst = new web3.eth.Contract(tokenABI,contract);
-            // const balanceMessi = await tokenInst.methods.balanceOf(addr).call()
-            // .then((res) => {
-            //     dispatch({
-            //         type: 'UPDATE_MESSI_TOKENS',
-            //         messiTokensAvailable: res.toString()
-            //     })
-            // })
             document.location.reload()
 
         } else {
@@ -101,7 +92,13 @@ const Navbar = ( { toggle } ) => {
         }
     }
 
-    const disconectWallet = async () => {
+    const disconnectWallet = async () => {
+        setShowPopUpDisconnect(true)
+    }
+    const closePopUpDisconnect = async() => {
+        setShowPopUpDisconnect(false)
+        disconnectWalletMetamask()
+        
 
     }
 
@@ -123,17 +120,15 @@ const Navbar = ( { toggle } ) => {
                             <NavItem>
                                 <NavLinks to="graphic" smooth={true} duration={500} spy={true} exact='true' offset={-80} >Graphic analysis</NavLinks>
                             </NavItem>
-                            {/* <NavItem>
-                                <NavLinks to="services" smooth={true} duration={500} spy={true} exact='true' offset={-80} >Services</NavLinks>
-                            </NavItem> */}
                             <NavItem>
                                 <NavLinks to="predictions" smooth={true} duration={500} spy={true} exact='true' offset={-80} >Predictions</NavLinks>
                             </NavItem>
                         </NavMenu>
                         <NavBtn>
-                            <NavBtnLink onClick={state.walletAddress === '' ? checkWallet : disconectWallet}>{state.walletAddress === '' ? 'Connect' : state.walletAddress}</NavBtnLink>
+                            <NavBtnLink onClick={() => state.walletAddress === '' ? checkWallet() : disconnectWallet()}>{state.walletAddress === '' ? 'Connect' : state.walletAddress}</NavBtnLink>
                             {state.messiTokensAvailable && <NavBtnLinkToken >{(state.messiTokensAvailable / 100000000000000000000).toFixed(2)}</NavBtnLinkToken>}
                         </NavBtn>
+                        {showPopUpDisconnect && <AlertDialogSlide closePopUp={() => setShowPopUpDisconnect(false)} closePopUpDisconnect={() => closePopUpDisconnect()}/> }
                     </NavbarContainer>
                 </Nav>
             </IconContext.Provider>

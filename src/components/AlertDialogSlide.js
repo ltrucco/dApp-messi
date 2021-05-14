@@ -11,22 +11,20 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function AlertDialogSlide() {
-  const [open, setOpen] = React.useState(false);
-
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
+export default function AlertDialogSlide({closePopUp, closePopUpDisconnect}) {
+  const [open, setOpen] = React.useState(true);
 
   const handleClose = () => {
     setOpen(false);
+    closePopUp()
+  };
+
+  const handleCloseDisconnect = () => {
+    setOpen(false);
+    closePopUpDisconnect()
   };
 
   return (
-    <div>
-      <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-        Slide in alert dialog
-      </Button>
       <Dialog
         open={open}
         TransitionComponent={Transition}
@@ -35,22 +33,20 @@ export default function AlertDialogSlide() {
         aria-labelledby="alert-dialog-slide-title"
         aria-describedby="alert-dialog-slide-description"
       >
-        <DialogTitle id="alert-dialog-slide-title">{"Use Google's location service?"}</DialogTitle>
+        <DialogTitle id="alert-dialog-slide-title">{"Metamask"}</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-slide-description">
-            Let Google help apps determine location. This means sending anonymous location data to
-            Google, even when no apps are running.
+            Would you like to disconnect your Metamask account?
           </DialogContentText>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">
-            Disagree
+            Cancel
           </Button>
-          <Button onClick={handleClose} color="primary">
-            Agree
+          <Button onClick={handleCloseDisconnect} color="primary">
+            Disconnect
           </Button>
         </DialogActions>
       </Dialog>
-    </div>
   );
 }
