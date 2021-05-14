@@ -54,7 +54,7 @@ const Footer = () => {
                         <SocialLogo to='/' onClick={toggleHome}>
                             Messi Finance
                         </SocialLogo>
-                        <WebsiteRights>Messi Finance © {new Date().getFullYear()}</WebsiteRights>
+                        <WebsiteRights>Messi Finance © {new Date().getFullYear()} v0.1.0</WebsiteRights>
                         <SocialIcons>
                             <SocialIconLink href="//www.facebook.com/" target="_blank" aria-label="Facebook">
                                 <FaFacebook/>
