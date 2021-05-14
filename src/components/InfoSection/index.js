@@ -16,11 +16,11 @@ const InfoSection = ({lightBg, id, imgStart, topLine, lightText, darkText, butto
 
     const checkTokenAmmount = () => {
         let tokensAvailable = (state.messiTokensAvailable / 100000000000000000000).toFixed(2)
-        if (tokensAvailable >= 2000000000){
+        if (tokensAvailable >= 15000000000){
             setOpenDialogStream(true)
             // setShowSnackbar(true)
         }else{
-            setMessage('You must have at least 20.000.000.000 $messi to access Live Broadcasts')
+            setMessage('You must have at least 15.000.000.000 $messi to access Live Broadcasts')
             setShowSnackbar(true)
         }
     }
