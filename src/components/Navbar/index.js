@@ -34,7 +34,7 @@ const Navbar = ( { toggle } ) => {
             };
 
             // Check if User is already connected by retrieving the accounts
-            web3.eth.getAccounts()
+            web3?.eth?.getAccounts()
                 .then( async ( addr ) => {
                     if ( addr[0] ) {
                         dispatch({
