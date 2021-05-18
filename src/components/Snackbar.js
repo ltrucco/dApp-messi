@@ -29,7 +29,7 @@ const useStyles = makeStyles(theme => ({
         borderRadius:'20px'
     },
     info: {
-        backgroundColor: '#004c2d',
+        backgroundColor: '#1e60bd',
         borderRadius:'20px'
     },
     warning: {

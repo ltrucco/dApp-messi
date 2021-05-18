@@ -4,6 +4,9 @@ const { createContext, useReducer } = React;
 const initialState = {
   walletAddress: '',
   messiTokensAvailable: '',
+  liveUrl: '',
+  tokenAmmount: '',
+  isLogged: false
 };
 
 const reducer = (state = initialState, action) => {
@@ -18,6 +21,25 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         messiTokensAvailable: action.messiTokensAvailable,
+      };
+    }
+    case "GET_LIVE_URL": {
+      return {
+        ...state,
+        liveUrl: action.liveUrl,
+      };
+    }
+    case "GET_TOKEN_AMMOUNT": {
+      return {
+        ...state,
+        tokenAmmount: action.tokenAmmount,
+      };
+    }
+
+    case "LOG_IN": {
+      return {
+        ...state,
+        isLogged: action.isLogged,
       };
     }
    

@@ -10,17 +10,17 @@ const Sidebar = ({isOpen, toggle}) => {
             <SidebarWrapper>
                 <SidebarMenu>
                     <SidebarLink to="liveStreams" onClick={toggle}>
-                        Live streams
+                        Livestreams
                     </SidebarLink>
                     <SidebarLink to="graphic" onClick={toggle}>
                         Graphic analysis
                     </SidebarLink>
-                    <SidebarLink to="services" onClick={toggle}>
-                        Services
+                    <SidebarLink to="predictions" onClick={toggle}>
+                        Predictions
                     </SidebarLink>
-                    <SidebarLink to="Sign Up" onClick={toggle}>
+                    {/* <SidebarLink to="Sign Up" onClick={toggle}>
                         Sign Up
-                    </SidebarLink>
+                    </SidebarLink> */}
                 </SidebarMenu>
                 <SideBtnWrap>
                     <SidebarRoute >

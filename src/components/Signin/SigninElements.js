@@ -2,22 +2,21 @@ import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 
 export const Container = styled.div`
-    min-height: 690px;
-    position: fixed;
+    min-height: 2000px;
+    /* position: fixed; */
     bottom: 0;
     top:0;
     left:0;
     right:0;
     z-index:0;
-    overflow: hidden;
+    /* overflow: hidden; */
     background: linear-gradient(
-        108deg, rgba(1,147,86, 1) 0%, rgba(10, 201, 122, 1) 100%
-        
+        108deg, #64b3f4, #c2e59c
     );
 `
 
 export const FormWrap = styled.div`
-        height:100%;
+        /* height:100%; */
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -44,16 +43,16 @@ export const Icon = styled(Link)`
 export const FormContent = styled.div`
     height: 100%;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: column; 
+     justify-content: center; 
 
     @media screen and (max-width: 480px){
         padding: 10px;
     }
 `
 
-export const Form = styled.form`
-    background: #010101;
+export const Form = styled.div`
+    background: #010606;
     max-width: 400px;
     height: auto;
     width: 100%;
@@ -69,7 +68,7 @@ export const Form = styled.form`
     }
 `
 
-export const FormH1 = styled.form`
+export const FormH1 = styled.h1`
     margin-bottom: 40px;
     color: #fff;
     font-size: 20px;
@@ -94,7 +93,7 @@ export const FormInput = styled.input`
 `
 
 export const FormButton = styled.button`
-    background: #01bf71;
+    background: #1e60bd;
     padding: 16px 0;
     border: none;
     border-radius: 4px;
@@ -103,9 +102,41 @@ export const FormButton = styled.button`
     cursor: pointer
 `
 
+export const ButtonConfirm =styled.button`
+    background: #000;
+    padding: 16px 16px;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer
+`
+
+export const ButtonViewGraphics =styled.button`
+    background: blue;
+    padding: 5px 5px;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer
+`
+
+
 export const Text = styled.span`
     text-align: center;
     margin-top: 24px;
     color: #fff;
     font-size: 14px;
+`
+
+export const CardWrapper = styled.div`
+    height: 100%;
+    display: flex;
+    overflow-x: auto;
+
+
+    @media screen and (max-width: 480px){
+        padding: 10px;
+    }
 `

@@ -119,11 +119,38 @@ export const NavBtnLink = styled.button`
 
 `
 
+export const NavBtnLinkPancake = styled.a`
+    border-radius: 20px;
+    background: #016039;
+    white-space: nowrap;
+    /* text-transform: lowercase; */
+    padding: 10px 20px;
+    margin-left: 20px;
+    color: #fff;
+    font-size: 17px;
+    font-weight:bold;
+    outline:none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    text-decoration: none;
+
+    &:hover{
+        transition: all 0.2s ease-in-out;
+        /* background: #f4cb56;
+        color: #010606; */
+    }
+
+`
+
+
+
 export const NavBtnLinkToken = styled.button`
     border-radius:10px;
     background: #01bf71;
     white-space: nowrap;
     margin-left: 20px;
+    /* opacity: 80%; */
     padding: 10px 20px;
     color: #010606;
     font-size: 17px;

@@ -7,13 +7,18 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Slide from '@material-ui/core/Slide';
 import YoutubeEmbed from './YoutubeEmbed';
+import { StoreContext } from '../Context/Store'
+
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
 export default function AlertDialogVideo({closePopUp, }) {
+
+  const { state, dispatch } = React.useContext( StoreContext )
   const [open, setOpen] = React.useState(true);
+
 
   const handleClose = () => {
     setOpen(false);
@@ -33,7 +38,7 @@ export default function AlertDialogVideo({closePopUp, }) {
         fullWidth={true}
       >
           <div >
-            <YoutubeEmbed embedId="oJeyHnkzO3I" />
+            <YoutubeEmbed embedId={state.liveUrl} />
 
           </div>
       

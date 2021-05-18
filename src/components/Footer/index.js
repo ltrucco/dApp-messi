@@ -52,25 +52,25 @@ const Footer = () => {
                 <SocialMedia>
                     <SocialMediaWrap>
                         <SocialLogo to='/' onClick={toggleHome}>
-                            Messi Finance
+                        Messi Finance
                         </SocialLogo>
-                        <WebsiteRights>Messi Finance © {new Date().getFullYear()} v0.1.1</WebsiteRights>
+                        <WebsiteRights>Messi Finance © {new Date().getFullYear()}  v0.9 </WebsiteRights>
                         <SocialIcons>
-                            <SocialIconLink href="//www.facebook.com/" target="_blank" aria-label="Facebook">
+                            {/* <SocialIconLink href="//www.facebook.com/" target="_blank" aria-label="Facebook">
                                 <FaFacebook/>
-                            </SocialIconLink>
-                            <SocialIconLink href="//www.instagram.com/" target="_blank" aria-label="Instagram">
+                            </SocialIconLink> */}
+                            <SocialIconLink href="//www.instagram.com/javiayul/" target="_blank" aria-label="Instagram">
                                 <FaInstagram/>
                             </SocialIconLink>
-                            <SocialIconLink href="//www.youtube.com/" target="_blank" aria-label="Youtube">
+                            <SocialIconLink href="//www.youtube.com/channel/UCCfZ-XI-SkBPHnDoLHCaZ2w" target="_blank" aria-label="Youtube">
                                 <FaYoutube/>
                             </SocialIconLink>
-                            <SocialIconLink href="//www.twitter.com/" target="_blank" aria-label="Twitter">
+                            <SocialIconLink href="//www.twitter.com/javiayul" target="_blank" aria-label="Twitter">
                                 <FaTwitter/>
                             </SocialIconLink>
-                            <SocialIconLink href="//www.linkedin.com/" target="_blank" aria-label="Linkedn">
+                            {/* <SocialIconLink href="//www.linkedin.com/" target="_blank" aria-label="Linkedn">
                                 <FaLinkedin/>
-                            </SocialIconLink>
+                            </SocialIconLink> */}
                         </SocialIcons>
                     </SocialMediaWrap>
                 </SocialMedia>

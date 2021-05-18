@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { FaBars } from 'react-icons/fa'
 import { IconContext } from 'react-icons/lib'
-import { Nav, NavbarContainer, NavLogo, MobileIcon, NavMenu, NavLinks, NavItem, NavBtn, NavBtnLink, NavBtnLinkToken } from './NavbarElements'
+import { Nav, NavbarContainer, NavLogo, MobileIcon, NavMenu, NavLinks, NavItem, NavBtn, NavBtnLink, NavBtnLinkToken, NavBtnLinkPancake} from './NavbarElements'
 import { animateScroll as scroll } from 'react-scroll'
 import { connectWallet, disconnectWalletMetamask } from '../../components/Metamask.js'
 import Web3 from 'web3'
@@ -9,7 +9,7 @@ import {contract} from '../../constants/contract.js'
 import {tokenABI} from '../../constants/tokenABI.js'
 import AlertDialogSlide from '../AlertDialogSlide'
 import { StoreContext } from '../../Context/Store'
-
+import {apiCalls} from '../../api/apiCalls'
 
 const Navbar = ( { toggle } ) => {
     // const web3 = new Web3('https://data-seed-prebsc-1-s1.binance.org:8545');
@@ -24,6 +24,9 @@ const Navbar = ( { toggle } ) => {
 
     React.useEffect( () => {
         // document.addEventListener('disconnect', eventDisconnectWallet, false);
+
+        getLiveUrl()
+
         const checkConnection = async () => {
             // Check if browser is running Metamask
             let web3;
@@ -43,7 +46,7 @@ const Navbar = ( { toggle } ) => {
                         })
                         
                         const tokenInst = new web3.eth.Contract(tokenABI,contract);
-                        const balanceMessi = await tokenInst.methods.balanceOf(addr[0]).call()
+                        const balancemessi = await tokenInst.methods.balanceOf(addr[0]).call()
                         .then((res) => {
                             dispatch({
                                 type: 'UPDATE_MESSI_TOKENS',
@@ -57,8 +60,40 @@ const Navbar = ( { toggle } ) => {
         checkConnection();
     }, [] );
 
+    const getLiveUrl = () => {
+        apiCalls.getLive({coin:'messi'})
+        .then((res) => {
+            dispatch({
+                type: 'GET_LIVE_URL',
+                liveUrl: res.data.liveUrl
+            })
+        })
+        .catch( ( err ) => {
+            dispatch({
+                type: 'GET_LIVE_URL',
+                liveUrl: ''
+            })
+
+        })
+
+        // apiCalls.patchCoin("1")
+        // .then((res) => {
+        //     dispatch({
+        //         type: 'GET_LIVE_URL',
+        //         liveUrl: res.data.liveUrl
+        //     })
+        // })
+        // .catch( ( err ) => {
+        //     dispatch({
+        //         type: 'GET_LIVE_URL',
+        //         liveUrl: ''
+        //     })
+
+        // })
+    }
+
     const changeNav = () => {
-        if ( window.scrollY >= 200 ) {
+        if ( window.scrollY >= 750 ) {
             setScrollNav( true )
         } else {
             setScrollNav( false )
@@ -115,7 +150,7 @@ const Navbar = ( { toggle } ) => {
                         </MobileIcon>
                         <NavMenu>
                             <NavItem>
-                                <NavLinks to="liveStreams" smooth={true} duration={500} spy={true} exact='true' offset={-80} >Live Streams</NavLinks>
+                                <NavLinks to="liveStreams" smooth={true} duration={500} spy={true} exact='true' offset={-80} >Livestreams</NavLinks>
                             </NavItem>
                             <NavItem>
                                 <NavLinks to="graphic" smooth={true} duration={500} spy={true} exact='true' offset={-80} >Graphic analysis</NavLinks>
@@ -127,6 +162,7 @@ const Navbar = ( { toggle } ) => {
                         <NavBtn>
                             <NavBtnLink onClick={() => state.walletAddress === '' ? checkWallet() : disconnectWallet()}>{state.walletAddress === '' ? 'Connect' : state.walletAddress}</NavBtnLink>
                             {state.messiTokensAvailable && <NavBtnLinkToken >{(state.messiTokensAvailable / 100000000000000000000).toFixed(2)}</NavBtnLinkToken>}
+                            <NavBtnLinkPancake href="//exchange.pancakeswap.finance/#/swap?inputCurrency=0xC1ecEB0821d492217bdbbAAfaDdD4aB1Cb43dA9d&outputCurrency=BSC" target="_blank">Buy $messi</NavBtnLinkPancake>
                         </NavBtn>
                         {showPopUpDisconnect && <AlertDialogSlide closePopUp={() => setShowPopUpDisconnect(false)} closePopUpDisconnect={() => closePopUpDisconnect()}/> }
                     </NavbarContainer>

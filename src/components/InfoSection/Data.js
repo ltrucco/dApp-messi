@@ -23,7 +23,7 @@ export const homeObjTwo = {
     topLine: 'Learn about your tokens',
     headline: 'Graphical analysis so you can learn to invest',
     description: "We have you covered no matter where you are located, all you need is an internet connection and a phone or computer",
-    buttonLabel: '',
+    buttonLabel: 'View graphics',
     imgStart: true,
     img: require('../../images/graphicAnalisys.svg').default,
     alt: "Pig",
